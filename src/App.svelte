@@ -1,40 +1,51 @@
 <script>
-	import { onMount, setContext } from "svelte";
-	import {
-	  key as userContextKey,
-	  initialValue as userContextInitialValue
-	} from "./userContext";
-	import LoginForm from "./LoginForm.svelte";
+    // import { goto } from '@sapper/app'
+  
+    let user = { username: '', password: '' }
+    let inProgress = false
+    let error = null
+  
+    async function submit () {
+      try {
+        inProgress = true
+        console.log('send a request to login the user')
+        inProgress = false
+        error = null
+        user = { username: '', password: '' }
+        goto('/')
+      } catch (err) {
+        error = err.response.data.message
+        inProgress = false
+      }
+    }
+</script>
+<h1>Hello</h1>
 
-	onMount(() => {
-	  setContext(userContextKey, userContextInitialValue);
-	});
-	const submit = ({ nid, password }) =>
-	  new Promise((resolve, reject) => {
-		setTimeout(() => {
-			debugger;
-		  setContext(userContextKey, {
-			name: "Foo",
-			lastName: "Bar",
-			nid: "foo@bar.com"
-		  });
-		  resolve();
-		}, 1000);
-	  });
-  </script>
-  
-  <style>
-	section {
-	  height: 100vh;
-	  width: 100%;
-	  display: flex;
-	  justify-content: center;
-	  align-items: center;
-	  background: linear-gradient(to right, #cd76e2, #e358ab);
-	}
-  </style>
-  
-  <section>
-	<LoginForm {submit} />
-  </section>
-  
+<!-- <section>
+    HELLO
+</section>
+<svelte:head>
+<title>Login</title>
+</svelte:head>
+
+<form class="login-form" on:submit|preventDefault="{submit}">
+{#if error}
+    <span class="error-message">
+    {error}
+    </span>
+{/if}
+<input class="text-input username-input"
+    bind:value="{user.username}"
+    type="text"
+    placeholder="username"
+    required>
+<input class="text-input password-input"
+    bind:value="{user.password}"
+    type="password"
+    placeholder="password"
+    required>
+<button class="login-button primary-button"
+    disabled="{inProgress}">
+    LOG IN
+</button>
+</form> -->
