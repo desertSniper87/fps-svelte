@@ -3,7 +3,7 @@
 </script>
 
 <main>
-  <h1 class="hero">Travel Packing Checklist</h1>
+  <h1 class="hero">খাদ্যশস্য সংগ্রহ ব্যবস্থাপনা সিস্টেম</h1>
   <Login />
 </main>
 

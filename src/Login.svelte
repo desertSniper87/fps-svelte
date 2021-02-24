@@ -2,9 +2,26 @@
     let nid = '';
     let password = '';
   
-    const login = () => {
+    async function login() {
+        const res = await fetch('http://114.130.54.178/fps/FarmerApi/login.json', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Host': '114.130.54.178'
+            },
+            body: new URLSearchParams({
+                farmer_nid: nid,
+                password: password,
+                device_id: "1a2b"
+            })
+        });
+        
+        const json = await res.json();
+        result = JSON.stringify(json);
+        
+        print(result);
+        return result;
     };
-    const signup = () => alert('You pressed Signup.');
   </script>
   
   <section>
@@ -24,7 +41,6 @@
       </label>
       <div class="buttons">
         <button>Login</button>
-        <button type="button" on:click={signup}>Sign Up</button>
       </div>
     </form>
   </section>
