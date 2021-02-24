@@ -1,10 +1,23 @@
 <script>
   import Login from './Login.svelte';
+  import {token} from './store';
+
+  // $ : login_token = '';
+
+  // token.subscribe( token => {
+  //   login_token = token;
+  // });
+
 </script>
 
 <main>
+  <h1>{$token}</h1>
   <h1 class="hero">খাদ্যশস্য সংগ্রহ ব্যবস্থাপনা সিস্টেম</h1>
-  <Login />
+  {#if $token}
+    <h1>User has logged in.</h1>
+  {:else}
+    <Login />
+  {/if}
 </main>
 
 <style>

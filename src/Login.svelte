@@ -1,9 +1,14 @@
 <script>
+    import {token} from "./store";
+
     // let nid = '1100000000001';
     // let password = '1';
     let nid = '';
     let password = 'Password123!';
-  
+
+    let device_id = "92f2721d9b75c28f";
+
+
     async function login() {
         // const res = await fetch('http://114.130.54.178/fps2/FarmerApi/login.json', {
         const res = await fetch('http://114.130.116.3/fps/FarmerApi/login.json', {
@@ -15,15 +20,18 @@
             body: new URLSearchParams({
                 farmer_nid: nid,
                 password: password,
-                device_id: "92f2721d9b75c28f"
+                device_id: device_id
             })
         });
         
         const json = await res.json();
-        const result = JSON.stringify(json);
-        
-        console.log(result);
-        return result;
+        console.log(json);
+
+        token.update(val => {val = json.result.str})
+
+        token.subscribe(val => {
+            localStorage.setItem("token", val)
+        });
     };
   </script>
   
