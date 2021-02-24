@@ -1,51 +1,33 @@
 <script>
-    // import { goto } from '@sapper/app'
-  
-    let user = { username: '', password: '' }
-    let inProgress = false
-    let error = null
-  
-    async function submit () {
-      try {
-        inProgress = true
-        console.log('send a request to login the user')
-        inProgress = false
-        error = null
-        user = { username: '', password: '' }
-        goto('/')
-      } catch (err) {
-        error = err.response.data.message
-        inProgress = false
-      }
-    }
+  import Login from './Login.svelte';
 </script>
-<h1>Hello</h1>
 
-<!-- <section>
-    HELLO
-</section>
-<svelte:head>
-<title>Login</title>
-</svelte:head>
+<main>
+  <h1 class="hero">Travel Packing Checklist</h1>
+  <Login />
+</main>
 
-<form class="login-form" on:submit|preventDefault="{submit}">
-{#if error}
-    <span class="error-message">
-    {error}
-    </span>
-{/if}
-<input class="text-input username-input"
-    bind:value="{user.username}"
-    type="text"
-    placeholder="username"
-    required>
-<input class="text-input password-input"
-    bind:value="{user.password}"
-    type="password"
-    placeholder="password"
-    required>
-<button class="login-button primary-button"
-    disabled="{inProgress}">
-    LOG IN
-</button>
-</form> -->
+<style>
+  :global(body) {
+    background-color: cornflowerblue;
+  }
+  .hero {
+    --height: 7rem;
+    background-color: orange;
+    color: white;
+    font-size: 4rem;
+    height: var(--height);
+    line-height: var(--height);
+    margin: 0 0 3rem 0;
+    text-align: center;
+    vertical-align: middle;
+    width: 100vw;
+  }
+  main {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+</style>
