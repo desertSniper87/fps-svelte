@@ -17,9 +17,9 @@
         });
         
         const json = await res.json();
-        result = JSON.stringify(json);
+        const result = JSON.stringify(json);
         
-        print(result);
+        console.log(result);
         return result;
     };
   </script>
