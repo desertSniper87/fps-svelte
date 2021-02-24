@@ -1,18 +1,21 @@
 <script>
+    // let nid = '1100000000001';
+    // let password = '1';
     let nid = '';
-    let password = '';
+    let password = 'Password123!';
   
     async function login() {
-        const res = await fetch('http://114.130.54.178/fps/FarmerApi/login.json', {
+        // const res = await fetch('http://114.130.54.178/fps2/FarmerApi/login.json', {
+        const res = await fetch('http://114.130.116.3/fps/FarmerApi/login.json', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
-                'Host': '114.130.54.178'
+                // 'Host': '114.130.54.178'
             },
             body: new URLSearchParams({
                 farmer_nid: nid,
                 password: password,
-                device_id: "1a2b"
+                device_id: "92f2721d9b75c28f"
             })
         });
         
