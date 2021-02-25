@@ -2,17 +2,21 @@
   import Login from './Login.svelte';
   import Dashboard from './Dashboard.svelte';
   import {token} from './store';
+  import Sidebar from './Sidebar.svelte';
 
 </script>
+
 
 <main>
   <h1 class="hero">খাদ্যশস্য সংগ্রহ ব্যবস্থাপনা সিস্টেম</h1>
   {#if $token}
-    <Dashboard />
+  <Dashboard />
   {:else}
-    <Login />
+  <Login />
   {/if}
 </main>
+
+<Sidebar />
 
 <style>
   :global(body) {
