@@ -1,4 +1,7 @@
 <script>
+    import { getContext } from 'svelte';
+
+    const tab = {};
 
 </script>
     <nav>
@@ -11,29 +14,29 @@
               <div class="front"></div>
             </div>
           </li>
-          <li>
+          <!-- <li>
             <div class="about-icon">
               <div class="head">
                 <div class="eyes"></div>
                 <div class="beard"></div>
               </div>
             </div>
-          </li>
-          <li>
+          </li> -->
+          <!-- <li>
             <div class="work-icon">
               <div class="paper"></div>
               <div class="lines"></div>
               <div class="lines"></div>
               <div class="lines"></div>
             </div>
-          </li>
-          <li>
+          </li> -->
+          <!-- <li>
             <div class="mail-icon">
               <div class="mail-base">
                 <div class="mail-top"></div>
               </div>
             </div>
-          </li>
+          </li> -->
         </ul>
       </nav>
 
