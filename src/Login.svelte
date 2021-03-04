@@ -1,9 +1,9 @@
 <script>
-    import {token} from "./store";
+    import {token, farmer_id} from "./store";
 
     // let nid = '1100000000001';
     // let password = '1';
-    let nid = '';
+    let nid = '19944798517000060';
     let password = 'Password123!';
     let device_id = "92f2721d9b75c28f";
 
@@ -26,11 +26,12 @@
         const json = await res.json();
         console.log(json);
 
-        token.update(val => {val = json.result.str})
+        token.set(device_id + json.result.str)
+        farmer_id.set(json.result.farmer_id)
 
-        token.subscribe(val => {
-            localStorage.setItem("token", val)
-        });
+        token.subscribe(val => { localStorage.setItem("token", val) });
+        farmer_id.subscribe(val => { localStorage.setItem("farmer_id", val) });
+
     };
 </script>
   
